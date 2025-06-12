@@ -131,13 +131,3 @@ chrome: 1: Syntax error: Unterminated quoted string
 * puppeteer ではなく puppeteer-core を使用
 * `executablePath` で system の Chromium を指定
 * puppeteer-core を使って Chromium を自前でインストール・管理する
-
----
-
-## 📄 ライセンス
-
-MIT
-
-```
-
-```
