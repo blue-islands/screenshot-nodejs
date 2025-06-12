@@ -1,5 +1,5 @@
 const express = require("express");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
 
 const app = express();
 const PORT = process.env.PORT || 8091;
@@ -14,6 +14,7 @@ app.get("/screenshot", async (req, res) => {
   let browser;
   try {
     const browser = await puppeteer.launch({
+      executablePath: "/usr/bin/chromium-browser", // ← 環境に応じて変更（例: /snap/bin/chromium）
       headless: "new",
       args: [
         "--no-sandbox",
