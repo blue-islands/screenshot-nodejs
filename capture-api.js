@@ -13,8 +13,19 @@ app.get("/screenshot", async (req, res) => {
 
   let browser;
   try {
-    browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    const browser = await puppeteer.launch({
+      headless: "new",
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-extensions",
+        "--disable-default-apps",
+        "--disable-popup-blocking",
+        "--disable-background-networking",
+        "--disable-background-timer-throttling",
+        "--disable-renderer-backgrounding",
+        "--disable-client-side-phishing-detection",
+      ],
     });
     const page = await browser.newPage();
 
