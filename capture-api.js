@@ -18,12 +18,20 @@ app.get("/screenshot", async (req, res) => {
     });
     const page = await browser.newPage();
 
+    await page.setViewport({
+      width: 1200,
+      height: 630,
+    });
+      
     await page.goto(url, {
       waitUntil: "networkidle2",
       timeout: 30000,
     });
 
-    const screenshotBuffer = await page.screenshot({ fullPage: true });
+    const screenshotBuffer = await page.screenshot({
+      clip: { x: 0, y: 0, width: 1200, height: 630 },
+      type: "png",
+    });
 
     res.set("Content-Type", "image/png");
     res.send(screenshotBuffer);
